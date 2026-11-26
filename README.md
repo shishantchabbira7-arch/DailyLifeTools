@@ -93,7 +93,7 @@ DailyLife-Tools/
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/shishantchabbira-stack/DailyLifeTools.git
+   git clone https://github.com/shishantchabbira7-arch/DailyLifeTools.git
    ```
 2. Open `index.html` in any modern web browser (Chrome, Edge, Firefox, Safari).
 3. No build step, node modules, or web servers required — it runs 100% out of the box!
