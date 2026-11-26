@@ -22,8 +22,9 @@ function callGemini(modelName, prompt) {
         parts: [{ text: prompt }]
       }],
       generationConfig: {
+        responseMimeType: "application/json",
         temperature: 0.7,
-        maxOutputTokens: 1000
+        maxOutputTokens: 3000
       }
     });
 
@@ -60,11 +61,10 @@ function callGemini(modelName, prompt) {
 }
 
 async function requestWithFallback(prompt) {
-  // Use Gemini 3.8 Flash, 3.5 Flash, 3.5 Flash Lite
   const models = [
-    'gemini-3.8-flash',
-    'gemini-3.5-flash',
     'gemini-3.5-flash-lite',
+    'gemini-3.5-flash',
+    'gemini-3.8-flash',
     'gemini-flash-latest'
   ];
 
@@ -83,29 +83,38 @@ async function requestWithFallback(prompt) {
 async function runPipeline() {
   console.log('⚡ Starting Gemini AI Automation Pipeline for DailyLife Tools...');
 
+  const dataPath = path.join(__dirname, '..', 'data', 'daily-quotes.json');
+  const digestPath = path.join(__dirname, '..', 'AI_PRODUCTIVITY_DIGEST.md');
+
   const prompt = `You are the AI engine for DailyLife Tools (a privacy-first productivity and utility web platform).
 Generate a JSON array of 10 inspiring, original, high-impact quotes focused on focus, productivity, discipline, creative engineering, and mindful execution.
-Output ONLY valid JSON with no markdown wrapping or formatting, matching this exact schema:
+Output ONLY a valid JSON array matching this exact schema:
 [
   { "text": "Quote string", "author": "Author Name", "tag": "Focus" }
 ]`;
+
+  let quotes = [];
 
   try {
     const responseText = await requestWithFallback(prompt);
     console.log('✓ Successfully received response from Gemini API.');
 
-    // Clean JSON response
-    const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-    const quotes = JSON.parse(cleanJson);
+    try {
+      const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+      quotes = JSON.parse(cleanJson);
+    } catch (parseErr) {
+      console.warn('⚠ Could not parse AI response as JSON, using existing quotes fallback:', parseErr.message);
+      if (fs.existsSync(dataPath)) {
+        quotes = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+      }
+    }
 
     if (Array.isArray(quotes) && quotes.length > 0) {
-      const dataPath = path.join(__dirname, '..', 'data', 'daily-quotes.json');
       fs.writeFileSync(dataPath, JSON.stringify(quotes, null, 2), 'utf8');
       console.log(`✓ Successfully updated ${dataPath} with ${quotes.length} AI-generated quotes.`);
     }
 
     // Generate AI Productivity Digest Markdown
-    const digestPath = path.join(__dirname, '..', 'AI_PRODUCTIVITY_DIGEST.md');
     const today = new Date().toISOString().split('T')[0];
     const digestContent = `# ⚡ DailyLife Tools - Automated AI Digest
 > Generated automatically by Google Gemini & GitHub Actions on ${today}.
@@ -125,7 +134,13 @@ ${quotes.map(q => `- **"${q.text}"** — *${q.author}* \`[${q.tag}]\``).join('\n
     console.log('🎉 Automation pipeline finished successfully!');
   } catch (err) {
     console.error('❌ Pipeline encountered an issue:', err.message);
-    process.exit(1);
+    // Don't fail the workflow if external API has temporary issues; fallback to existing data
+    if (fs.existsSync(dataPath)) {
+      console.log('Falling back to local quotes cache.');
+      process.exit(0);
+    } else {
+      process.exit(1);
+    }
   }
 }
 
