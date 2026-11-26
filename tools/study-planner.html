@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Planner & Pomodoro Timer - Focus & Task Tracker | DailyLife Tools</title>
+  <meta name="description" content="Boost focus with a customizable Pomodoro timer, audio chime notifications, session tracking, and study task planning.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Study Planner</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Interval Focus Engine • Audio Chime</span>
+      </div>
+      <h1 class="tool-main-title">Study Planner &amp; <span class="gradient-text">Pomodoro Timer</span></h1>
+      <p class="tool-tagline">
+        Maximize cognitive retention and eliminate study fatigue using scientific 25-minute focus intervals and structured task sprints.
+      </p>
+    </section>
+
+    <!-- Workspace -->
+    <section class="tool-workspace">
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: start;">
+        
+        <!-- Timer Column -->
+        <div class="glass-card timer-container">
+          <!-- Mode Tabs -->
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <button class="cat-tab pomo-mode-btn active" data-mode="focus">🎯 Focus (25m)</button>
+            <button class="cat-tab pomo-mode-btn" data-mode="shortBreak">☕ Short Break (5m)</button>
+            <button class="cat-tab pomo-mode-btn" data-mode="longBreak">🌴 Long Break (15m)</button>
+          </div>
+
+          <!-- Circular SVG Countdown Ring -->
+          <div class="timer-circle-wrap">
+            <svg class="timer-svg" viewBox="0 0 260 260">
+              <defs>
+                <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6366f1" />
+                  <stop offset="50%" stop-color="#8b5cf6" />
+                  <stop offset="100%" stop-color="#06b6d4" />
+                </linearGradient>
+              </defs>
+              <circle class="timer-circle-bg" cx="130" cy="130" r="120" />
+              <circle class="timer-circle-progress" id="pomoProgressRing" cx="130" cy="130" r="120" 
+                      stroke-dasharray="753.98" stroke-dashoffset="0" />
+            </svg>
+            <div class="timer-text-overlay">
+              <div class="timer-time" id="pomoDisplay">25:00</div>
+              <div class="timer-mode-lbl" id="pomoModeText">Focus Session</div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="btn btn-primary btn-lg" id="pomoStartBtn" style="min-width: 140px;">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Start</span>
+            </button>
+            <button class="btn btn-secondary btn-lg" id="pomoResetBtn">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+              <span>Reset</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Study Goal Tips & Quick Checklist -->
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #ffffff;">The Pomodoro Technique</h3>
+          <p style="color: var(--text-muted); font-size: 0.925rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            Developed by Francesco Cirillo in the late 1980s, the technique utilizes timed sprints to train sustained mental focus and prevent brain fatigue.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+              <span class="badge badge-cyan" style="min-width: 28px; justify-content: center;">1</span>
+              <div style="font-size: 0.9rem; color: var(--text-main);">
+                <strong>Choose your subject:</strong> Select one specific topic, chapter, or problem set.
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+              <span class="badge badge-cyan" style="min-width: 28px; justify-content: center;">2</span>
+              <div style="font-size: 0.9rem; color: var(--text-main);">
+                <strong>Eliminate distractions:</strong> Silence phone notifications and close unrelated browser tabs.
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+              <span class="badge badge-cyan" style="min-width: 28px; justify-content: center;">3</span>
+              <div style="font-size: 0.9rem; color: var(--text-main);">
+                <strong>Work with intensity:</strong> Commit completely until the audio bell chime rings.
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+              <span class="badge badge-cyan" style="min-width: 28px; justify-content: center;">4</span>
+              <div style="font-size: 0.9rem; color: var(--text-main);">
+                <strong>Rest and recharge:</strong> Stand up, hydrate, stretch, and let your brain integrate the concepts.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

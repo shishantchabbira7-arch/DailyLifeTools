@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter - Live Exchange Rates & Forex | DailyLife Tools</title>
+  <meta name="description" content="Convert 32+ world currencies with instant exchange rates, inverse conversion rates, and quick currency comparison tables.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Currency Converter</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">FX Matrix • 32+ World Currencies</span>
+      </div>
+      <h1 class="tool-main-title">Live <span class="gradient-text">Currency Converter</span></h1>
+      <p class="tool-tagline">
+        Calculate accurate international exchange rates across global currencies with instant inverse calculation.
+      </p>
+    </section>
+
+    <!-- Workspace -->
+    <section class="tool-workspace">
+      <div class="glass-card converter-card">
+        
+        <div class="converter-inputs-grid">
+          <!-- Amount & From -->
+          <div>
+            <label class="form-label">You Send (Amount &amp; Currency):</label>
+            <input type="number" class="form-control" id="curFromVal" value="100" min="0" step="any" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">
+            <select class="form-control" id="curFrom"></select>
+          </div>
+
+          <!-- Swap -->
+          <div style="padding-top: 1.5rem;">
+            <button class="swap-btn" id="curSwapBtn" title="Swap Currencies">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- To -->
+          <div>
+            <label class="form-label">You Receive (Estimated):</label>
+            <div class="form-control" id="curToVal" style="font-size: 1.35rem; font-weight: 800; color: #34d399; margin-bottom: 0.75rem; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
+              0.00
+            </div>
+            <select class="form-control" id="curTo"></select>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem;">
+          <div class="stat-pill" id="curRateInfo" style="font-size: 0.95rem; font-weight: 600; color: var(--primary-light);">
+            Calculating...
+          </div>
+        </div>
+
+        <!-- Quick Comparison Table -->
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin: 2.5rem 0 1rem; color: #ffffff;">Quick Conversion Reference</h4>
+        
+        <div style="max-height: 250px; overflow-y: auto;">
+          <table class="extra-stats-table">
+            <tbody id="curQuickTable">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

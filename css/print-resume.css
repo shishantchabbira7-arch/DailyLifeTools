@@ -1,0 +1,23 @@
+/* Print styles for Resume Builder */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .resume-paper-preview, .resume-paper-preview * {
+    visibility: visible;
+  }
+  .resume-paper-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  @page {
+    margin: 10mm;
+    size: auto;
+  }
+}

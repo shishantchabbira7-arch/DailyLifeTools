@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Compressor - Free Online PDF Compression | DailyLife Tools</title>
+  <meta name="description" content="Compress PDF files online for free directly in your browser. Reduce PDF document file size with zero file uploads. 100% private and secure.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+        <button class="mobile-toggle" id="mobileMenuToggle">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html" class="mobile-nav-link">Home 🏠</a></li>
+      <li><a href="../index.html#toolsSection" class="mobile-nav-link active">All 12 Tools 🛠️</a></li>
+      <li><a href="../about.html" class="mobile-nav-link">About Us ℹ️</a></li>
+      <li><a href="../contact.html" class="mobile-nav-link">Contact Support ✉️</a></li>
+    </ul>
+  </div>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>PDF Compressor</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Client-Side Engine • Zero Uploads</span>
+      </div>
+      <h1 class="tool-main-title">Online <span class="gradient-text">PDF Compressor</span></h1>
+      <p class="tool-tagline">
+        Reduce PDF document file size in your browser without sacrificing document readability. Your PDF never leaves your computer.
+      </p>
+    </section>
+
+    <!-- Tool Main Workspace -->
+    <section class="tool-workspace">
+      <!-- Dropzone -->
+      <div class="dropzone glass-card" id="pdfDropzone">
+        <div class="dropzone-icon-box">
+          <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+          </svg>
+        </div>
+        <div class="dropzone-title">Drop your PDF file here, or click to browse</div>
+        <div class="dropzone-sub">Supports all standard PDF documents up to 100MB • 100% Private</div>
+        <input type="file" id="pdfFileInput" accept="application/pdf">
+      </div>
+
+      <!-- Config Panel (Appears after file selection) -->
+      <div id="pdfConfigPanel" style="display: none; margin-top: 2rem;">
+        <div class="glass-card" style="padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Selected Document:</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: #ffffff;" id="pdfFileName">document.pdf</div>
+            </div>
+            <div class="stat-pill">
+              Original Size: <strong id="pdfOriginalSize" style="color: #ffffff;">0 KB</strong>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <label class="form-label">Select Compression Strength:</label>
+            <div class="toggle-group" style="grid-template-columns: repeat(3, 1fr);">
+              <label class="toggle-label">
+                <input type="radio" name="compressionLevel" value="extreme">
+                <div>
+                  <div style="font-weight: 700; color: #ffffff;">Extreme</div>
+                  <div style="font-size: 0.8rem; color: var(--text-dim);">Max compression, smaller file</div>
+                </div>
+              </label>
+              <label class="toggle-label">
+                <input type="radio" name="compressionLevel" value="medium" checked>
+                <div>
+                  <div style="font-weight: 700; color: #ffffff;">Recommended</div>
+                  <div style="font-size: 0.8rem; color: var(--text-dim);">Balanced quality &amp; file size</div>
+                </div>
+              </label>
+              <label class="toggle-label">
+                <input type="radio" name="compressionLevel" value="low">
+                <div>
+                  <div style="font-weight: 700; color: #ffffff;">Light</div>
+                  <div style="font-size: 0.8rem; color: var(--text-dim);">Highest visual clarity</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <button class="btn btn-primary btn-lg" id="compressPdfBtn">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+              <span>Compress PDF Now</span>
+            </button>
+          </div>
+
+          <!-- Progress Bar & Status -->
+          <div style="margin-top: 1.5rem;">
+            <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 0.5rem;" id="pdfStatusText"></div>
+            <div class="planner-progress-bar">
+              <div class="planner-progress-fill" id="pdfProgressBar" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Panel -->
+      <div id="pdfResultPanel" style="display: none; margin-top: 2rem;">
+        <div class="glass-card" style="padding: 2.5rem; text-align: center; border-color: rgba(16, 185, 129, 0.4);">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎉</div>
+          <h3 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Your PDF is Ready!</h3>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Document successfully optimized with client-side compression.</p>
+
+          <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <div class="stat-pill" style="padding: 0.75rem 1.25rem;">
+              Optimized Size: <strong id="pdfNewSize" style="color: #ffffff; font-size: 1.1rem; margin-left: 0.5rem;">0 KB</strong>
+            </div>
+            <div class="stat-pill" style="padding: 0.75rem 1.25rem;">
+              Reduction: <span class="saving-badge" id="pdfSavings" style="margin-left: 0.5rem;">-0%</span>
+            </div>
+          </div>
+
+          <button class="btn btn-cyan btn-lg" id="downloadPdfBtn">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>Download Compressed PDF</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Educational & Feature Info -->
+    <section style="margin: 4rem 0;">
+      <div class="glass-card" style="padding: 2.5rem;">
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.25rem;">Why use DailyLife Tools PDF Compressor?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;">
+          <div>
+            <h4 style="color: var(--primary-light); margin-bottom: 0.4rem;">🔐 Complete Document Confidentiality</h4>
+            <p style="color: var(--text-muted); font-size: 0.925rem;">Unlike traditional cloud compressors, our tool executes locally on your CPU using WebAssembly and PDF-Lib. Legal contracts, bank statements, and sensitive tax forms never travel across the internet.</p>
+          </div>
+          <div>
+            <h4 style="color: var(--primary-light); margin-bottom: 0.4rem;">⚡ No Wait Time or Queues</h4>
+            <p style="color: var(--text-muted); font-size: 0.925rem;">Skip tedious upload bars and remote server rendering lines. Your file is parsed immediately in your browser cache with high-efficiency object stream compression.</p>
+          </div>
+          <div>
+            <h4 style="color: var(--primary-light); margin-bottom: 0.4rem;">♾️ Unlimited Files, Zero Fees</h4>
+            <p style="color: var(--text-muted); font-size: 0.925rem;">Compress as many documents as you need without daily file limits, watermarks, paywalls, or annoying login requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

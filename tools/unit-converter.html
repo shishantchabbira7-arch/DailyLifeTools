@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter - Universal Measurement Conversion | DailyLife Tools</title>
+  <meta name="description" content="Convert measurements instantaneously across Length, Weight, Temperature, Area, Volume, Speed, Digital Storage, and Time.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Unit Converter</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Multi-Metric Engine • Bi-Directional</span>
+      </div>
+      <h1 class="tool-main-title">Universal <span class="gradient-text">Unit Converter</span></h1>
+      <p class="tool-tagline">
+        Instantly convert values between Metric, Imperial, and International scientific systems with high precision.
+      </p>
+    </section>
+
+    <!-- Workspace -->
+    <section class="tool-workspace">
+      <div class="glass-card converter-card">
+        
+        <!-- Category Selector -->
+        <div class="form-group" style="max-width: 420px; margin: 0 auto 2rem;">
+          <label class="form-label" style="text-align: center;">Measurement Category:</label>
+          <select class="form-control" id="ucCategory" style="font-size: 1.1rem; padding: 0.85rem 1.25rem;">
+            <option value="length">📏 Length &amp; Distance</option>
+            <option value="weight">⚖️ Weight &amp; Mass</option>
+            <option value="temperature">🌡️ Temperature</option>
+            <option value="area">🗺️ Area</option>
+            <option value="volume">🧪 Volume &amp; Capacity</option>
+            <option value="speed">🏎️ Speed &amp; Velocity</option>
+            <option value="storage">💾 Digital Storage</option>
+            <option value="time">⏱️ Time</option>
+          </select>
+        </div>
+
+        <!-- Converter Dual Grid -->
+        <div class="converter-inputs-grid">
+          <!-- From -->
+          <div>
+            <label class="form-label">From:</label>
+            <select class="form-control" id="ucFromUnit" style="margin-bottom: 0.75rem;"></select>
+            <input type="number" class="form-control" id="ucFromVal" value="1" step="any" style="font-size: 1.3rem; font-weight: 700;">
+          </div>
+
+          <!-- Swap Button -->
+          <div style="padding-top: 1.5rem;">
+            <button class="swap-btn" id="ucSwapBtn" title="Swap Units">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- To -->
+          <div>
+            <label class="form-label">To:</label>
+            <select class="form-control" id="ucToUnit" style="margin-bottom: 0.75rem;"></select>
+            <input type="number" class="form-control" id="ucToVal" step="any" style="font-size: 1.3rem; font-weight: 700; color: var(--primary-light);">
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-dim);">
+          ⚡ Live two-way synchronization: typing in either box automatically calculates the other.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

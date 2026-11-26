@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Text Helper - Paraphrase, Grammar & Summary Assistant | DailyLife Tools</title>
+  <meta name="description" content="Client-side AI & NLP text assistant. Paraphrase sentences, fix grammar mistakes, summarize long articles, analyze sentiment and extract key action items.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>AI Text Helper</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Client NLP Engine • Zero Data Leakage</span>
+      </div>
+      <h1 class="tool-main-title">Smart <span class="gradient-text">AI Text Helper</span></h1>
+      <p class="tool-tagline">
+        Rewrite sentences, fix grammar flaws, generate extractive summaries, assess message sentiment, and extract bullet action items.
+      </p>
+    </section>
+
+    <!-- Workspace -->
+    <section class="tool-workspace">
+      <div class="glass-card" style="padding: 2rem;">
+        
+        <!-- Mode Tabs -->
+        <div class="ai-mode-tabs">
+          <button class="ai-tab active" data-mode="paraphrase">✨ Paraphrase &amp; Rewrite</button>
+          <button class="ai-tab" data-mode="grammar">🛡️ Grammar &amp; Spell Fix</button>
+          <button class="ai-tab" data-mode="summarize">📑 Text Summarizer</button>
+          <button class="ai-tab" data-mode="tone">🎯 Tone &amp; Sentiment</button>
+          <button class="ai-tab" data-mode="bullets">📌 Action Items / Bullets</button>
+        </div>
+
+        <!-- Dual Panel Interface -->
+        <div class="ai-dual-panel">
+          <!-- Input Panel -->
+          <div class="ai-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <label class="form-label" style="margin-bottom: 0;">Original Input:</label>
+              <span id="aiInputCount" style="font-size: 0.8rem; color: var(--text-dim);">0 words</span>
+            </div>
+            <textarea id="aiInputText" placeholder="Paste your text here to transform..."></textarea>
+            
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <button class="btn btn-primary" id="aiRunBtn">Rewrite Text ✨</button>
+              <button class="btn btn-secondary" id="aiClearBtn">Clear</button>
+            </div>
+          </div>
+
+          <!-- Output Panel -->
+          <div class="ai-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <label class="form-label" style="margin-bottom: 0;">AI Enhanced Output:</label>
+              <span id="aiOutputCount" style="font-size: 0.8rem; color: var(--primary-light);">0 words</span>
+            </div>
+            <textarea id="aiOutputText" readonly placeholder="Enhanced output will appear here..."></textarea>
+            
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <button class="btn btn-cyan" id="aiCopyBtn">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                </svg>
+                <span>Copy Result</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

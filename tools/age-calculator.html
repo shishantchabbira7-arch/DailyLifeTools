@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator - Exact Chronological Age & Live Ticker | DailyLife Tools</title>
+  <meta name="description" content="Calculate your exact age down to live seconds, next birthday countdown, total days lived, heartbeats, and astrological zodiac sign.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Age Calculator</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Chronological Engine • Live Second Counter</span>
+      </div>
+      <h1 class="tool-main-title">Precise <span class="gradient-text">Age Calculator</span></h1>
+      <p class="tool-tagline">
+        Calculate your exact chronological age in years, months, days, minutes, live ticking seconds, and milestone statistics.
+      </p>
+    </section>
+
+    <!-- Workspace -->
+    <section class="tool-workspace">
+      <div class="glass-card" style="padding: 2.5rem; max-width: 840px; margin: 0 auto;">
+        
+        <!-- Input Row -->
+        <div style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin-bottom: 2rem;">
+          <div style="flex: 1; min-width: 240px;">
+            <label class="form-label">Select Your Date of Birth:</label>
+            <input type="date" class="form-control" id="birthDateInput" value="2000-01-15">
+          </div>
+          <button class="btn btn-primary" id="calculateAgeBtn" style="padding: 0.75rem 1.75rem;">
+            Calculate Exact Age
+          </button>
+        </div>
+
+        <!-- Big Highlight Cards -->
+        <div class="age-result-grid">
+          <div class="age-stat-card">
+            <div class="age-number" id="ageYears">0</div>
+            <div class="age-unit">Years</div>
+          </div>
+          <div class="age-stat-card">
+            <div class="age-number" id="ageMonths">0</div>
+            <div class="age-unit">Months</div>
+          </div>
+          <div class="age-stat-card">
+            <div class="age-number" id="ageDays">0</div>
+            <div class="age-unit">Days</div>
+          </div>
+        </div>
+
+        <!-- Detailed Statistics Table -->
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.75rem; color: #ffffff;">Life Milestones &amp; Trivia</h3>
+        
+        <table class="extra-stats-table">
+          <tbody>
+            <tr>
+              <td>Next Birthday In</td>
+              <td id="nextBdayDays">-</td>
+            </tr>
+            <tr>
+              <td>Day of the Week Born</td>
+              <td id="dayBorn">-</td>
+            </tr>
+            <tr>
+              <td>Zodiac Sign</td>
+              <td id="zodiacSign">-</td>
+            </tr>
+            <tr>
+              <td>Total Days Lived</td>
+              <td id="totalDaysLived">-</td>
+            </tr>
+            <tr>
+              <td>Total Hours Lived</td>
+              <td id="totalHoursLived">-</td>
+            </tr>
+            <tr>
+              <td>Total Minutes Lived</td>
+              <td id="totalMinutesLived">-</td>
+            </tr>
+            <tr>
+              <td>Live Seconds Ticking</td>
+              <td id="totalSecondsLived" style="font-family: 'JetBrains Mono', monospace; color: var(--cyan);">-</td>
+            </tr>
+            <tr>
+              <td>Estimated Heartbeats (~72 bpm)</td>
+              <td id="totalHeartbeats" style="color: #34d399;">-</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

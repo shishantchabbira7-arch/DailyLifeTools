@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter - Real-Time Text Analysis & Case Converter | DailyLife Tools</title>
+  <meta name="description" content="Free online word counter, character counter, reading time calculator, keyword density analyzer, and case converter. Fast and client-side.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Word Counter</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Live Character &amp; Reading Engine</span>
+      </div>
+      <h1 class="tool-main-title">Professional <span class="gradient-text">Word Counter</span></h1>
+      <p class="tool-tagline">
+        Analyze text length, reading duration, speaking speed, keyword density, and transform text cases with one click.
+      </p>
+    </section>
+
+    <!-- Metrics Cards Row -->
+    <section>
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-val" id="wcWords" style="color: var(--primary-light);">0</div>
+          <div class="metric-lbl">Total Words</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="wcChars">0</div>
+          <div class="metric-lbl">Characters (Spaces)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="wcCharsNoSpace">0</div>
+          <div class="metric-lbl">Chars (No Spaces)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val" id="wcReadingTime" style="color: var(--cyan);">0 min</div>
+          <div class="metric-lbl">Reading Time</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace Grid -->
+    <section class="tool-workspace">
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 2rem; align-items: start;">
+        
+        <!-- Text Area & Controls -->
+        <div class="glass-card" style="padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <label class="form-label" style="margin-bottom: 0;">Type or paste your text below:</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary btn-sm" id="wcCopyBtn">Copy Text</button>
+              <button class="btn btn-secondary btn-sm" id="wcClearBtn">Clear</button>
+            </div>
+          </div>
+
+          <textarea class="form-control" id="wcInput" rows="12" placeholder="Start typing or paste articles, essays, or code here..."></textarea>
+
+          <!-- Case Converters -->
+          <div style="margin-top: 1.5rem;">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem;">Transform Case:</div>
+            <div class="case-btn-group">
+              <button class="btn btn-secondary btn-sm case-btn" data-case="upper">UPPERCASE</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="lower">lowercase</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="title">Title Case</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="sentence">Sentence case</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="camel">camelCase</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="kebab">kebab-case</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="snake">snake_case</button>
+              <button class="btn btn-secondary btn-sm case-btn" data-case="clean">Trim Spaces</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Stats & Density -->
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem;">Detailed Text Breakdown</h3>
+
+          <div style="display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--border-subtle);">
+            <span style="color: var(--text-muted);">Sentences:</span>
+            <strong id="wcSentences" style="color: #ffffff;">0</strong>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--border-subtle);">
+            <span style="color: var(--text-muted);">Paragraphs:</span>
+            <strong id="wcParagraphs" style="color: #ffffff;">0</strong>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--border-subtle);">
+            <span style="color: var(--text-muted);">Speaking Time (130 wpm):</span>
+            <strong id="wcSpeakingTime" style="color: #ffffff;">0 min</strong>
+          </div>
+
+          <h4 style="font-size: 1rem; font-weight: 700; margin: 1.75rem 0 0.85rem; color: #ffffff;">Top Keyword Density</h4>
+          <div id="wcDensityList">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Personal Finance & Budget Manager | DailyLife Tools</title>
+  <meta name="description" content="Manage personal finances, monitor income and expenses, calculate net balance, and export CSV spreadsheets with local storage persistence.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <span>DailyLife<span class="gradient-text">.Tools</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#toolsSection" class="nav-link active">All Tools</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#toolsSection" class="btn btn-secondary btn-sm">← Back to Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#toolsSection">Tools</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Expense Tracker</span>
+      </nav>
+    </div>
+
+    <!-- Tool Header -->
+    <section class="tool-header-section">
+      <div class="tool-header-badge">
+        <span class="badge badge-glow">Local Ledger • CSV Export</span>
+      </div>
+      <h1 class="tool-main-title">Personal <span class="gradient-text">Expense Tracker</span></h1>
+      <p class="tool-tagline">
+        Track cashflow, categorize spending habits, compute net liquidity, and export spreadsheets without cloud leakage.
+      </p>
+    </section>
+
+    <!-- Financial Cards Row -->
+    <section>
+      <div class="finance-summary-grid">
+        <div class="finance-card balance">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary-light); font-weight: 700;">Net Balance</div>
+          <div class="finance-card-val" id="expBalanceVal" style="color: #ffffff;">$0.00</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem;">Real-time available savings</div>
+        </div>
+
+        <div class="finance-card income">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #34d399; font-weight: 700;">Total Income</div>
+          <div class="finance-card-val" id="expIncomeVal" style="color: #34d399;">$0.00</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem;">All revenue sources</div>
+        </div>
+
+        <div class="finance-card expense">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #f87171; font-weight: 700;">Total Expenses</div>
+          <div class="finance-card-val" id="expExpenseVal" style="color: #f87171;">$0.00</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem;">All outflow deductions</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace -->
+    <section class="tool-workspace">
+      <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem; align-items: start;">
+        
+        <!-- Add Transaction Form -->
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: #ffffff;">New Transaction</h3>
+
+          <form id="expenseForm">
+            <div class="form-group">
+              <label class="form-label">Transaction Type:</label>
+              <select class="form-control" id="expType">
+                <option value="expense">Expense (-)</option>
+                <option value="income">Income (+)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Description / Note:</label>
+              <input type="text" class="form-control" id="expDesc" placeholder="e.g. Grocery store, Freelance client..." required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label class="form-label">Amount ($):</label>
+                <input type="number" class="form-control" id="expAmount" placeholder="0.00" step="any" min="0.01" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Category:</label>
+                <select class="form-control" id="expCategory">
+                  <option value="Food">Food &amp; Dining</option>
+                  <option value="Housing">Housing &amp; Rent</option>
+                  <option value="Transport">Transportation</option>
+                  <option value="Utilities">Utilities &amp; Bills</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Salary">Salary</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Investment">Investment</option>
+                  <option value="Health">Health &amp; Medical</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Date:</label>
+              <input type="date" class="form-control" id="expDate">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+              + Record Transaction
+            </button>
+          </form>
+        </div>
+
+        <!-- Transactions Ledger Table -->
+        <div class="glass-card" style="padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff;">Transaction Ledger</h3>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary btn-sm" id="exportExpensesBtn">Export CSV</button>
+              <button class="btn btn-secondary btn-sm" id="clearExpensesBtn">Clear All</button>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="tx-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="expTableBody">
+                <!-- Dynamically populated via js/tools.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Monetag Ad Slot Container -->
+    <div class="ad-slot-container">
+      <div class="ad-slot-box">
+        <span class="ad-tag">Advertisement • Monetag Placement</span>
+        <div class="ad-placeholder-text">
+          <span style="color: var(--text-dim); font-size: 0.85rem;">Monetag High-CPM In-Content Ad Placeholder (728x90 / Responsive)</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom" style="border-top: none; padding-top: 0;">
+      <div>© 2026 DailyLife Tools. All rights reserved.</div>
+      <div><a href="../privacy.html" style="color: var(--text-dim);">Privacy Policy</a> • <a href="../terms.html" style="color: var(--text-dim);">Terms</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/tools.js"></script>
+</body>
+</html>
