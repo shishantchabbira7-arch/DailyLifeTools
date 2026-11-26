@@ -1,0 +1,47 @@
+name: Gemini AI Daily Automation
+
+on:
+  schedule:
+    # Runs everyday at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for running manual AI sync'
+        required: false
+        default: 'Manual trigger via GitHub Actions'
+
+permissions:
+  contents: write
+
+jobs:
+  ai-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Gemini AI Automation Pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          node scripts/gemini_pipeline.js
+
+      - name: Commit and Push AI Content Updates
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/daily-quotes.json AI_PRODUCTIVITY_DIGEST.md
+          if git diff --staged --quiet; then
+            echo "No content changes detected. Skipping commit."
+          else
+            git commit -m "chore(ai): daily productivity quotes and digest sync [skip ci]"
+            git push
+          fi

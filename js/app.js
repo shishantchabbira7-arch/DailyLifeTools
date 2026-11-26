@@ -359,14 +359,27 @@ function initDailyQuotes() {
 
   if (!quoteText) return;
 
+  // Attempt to load fresh AI-generated quotes from data/daily-quotes.json
+  const prefix = getRelativePrefix();
+  fetch(`${prefix}data/daily-quotes.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(dynamicQuotes => {
+      if (Array.isArray(dynamicQuotes) && dynamicQuotes.length > 0) {
+        DAILY_QUOTES.length = 0;
+        dynamicQuotes.forEach(q => DAILY_QUOTES.push(q));
+      }
+      loadRandomQuote();
+    })
+    .catch(() => {
+      loadRandomQuote();
+    });
+
   function loadRandomQuote() {
     const q = DAILY_QUOTES[Math.floor(Math.random() * DAILY_QUOTES.length)];
     quoteText.textContent = `“${q.text}”`;
     quoteAuthor.textContent = `— ${q.author}`;
     if (quoteTag) quoteTag.textContent = q.tag;
   }
-
-  loadRandomQuote();
 
   if (refreshBtn) {
     refreshBtn.addEventListener('click', () => {
